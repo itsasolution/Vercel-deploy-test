@@ -23,7 +23,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 try {
-  let Mongourl = "mongodb://127.0.0.1:27017/Renify";
+  let Mongourl = "mongodb+srv://Astro-Coder:astro@cluster0.nvexmiu.mongodb.net/Renify?retryWrites=true&w=majority&appName=Cluster0";
 
   mongoose.connect(Mongourl)
   console.log("DB connection success")
