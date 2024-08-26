@@ -5,7 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users')
+var usersRouter = require('./routes/users');
+const { default: mongoose } = require('mongoose');
 var app = express();
 
 // view engine setup 
