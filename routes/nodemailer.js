@@ -1,11 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-require('dotenv').config();
-
 const nodemailer = require('nodemailer');
 
-async function sendMail() {
+async function sendMail(To_user) {
     // Create a transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -18,33 +16,33 @@ async function sendMail() {
     // Setup email data
     let mailOptions = {
         from: `"Renify" <${process.env.EMAIL_USER}>`, // sender address
-        to: 'fakesingh555@gmail.com', // list of receivers
-        subject: 'Booking Details', // Subject line
-        text: 'Hello ✔ its Astro HOLA thanks for using renify', // plain text body
+        to: To_user, // list of receivers
+        subject: 'Renify ✔', // Subject line
+        text: 'Booking Details HOLA thanks for using renify', // plain text body
         html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
             <h2 style="color: #4CAF50;">Booking Confirmation</h2>
             <p>Dear Customer,</p>
-            <p>Thank you for your booking! We are pleased to confirm your booking for <strong>Product XYZ</strong>.</p>
+            <p>Thank you for your booking! We are pleased to confirm your booking for the <strong>Vehicle</strong>.</p>
             <table style="width: 100%; border-collapse: collapse;">
                 <tr>
                     <th style="text-align: left; padding: 8px; border-bottom: 1px solid #ddd;">Booking Details</th>
                     <th style="text-align: left; padding: 8px; border-bottom: 1px solid #ddd;"></th>
                 </tr>
                 <tr>
-                    <td style="padding: 8px; border-bottom: 1px solid #ddd;">Product Name</td>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;">Vehilce</td>
                     <td style="padding: 8px; border-bottom: 1px solid #ddd;">XYZ</td>
                 </tr>
                 <tr>
-                    <td style="padding: 8px; border-bottom: 1px solid #ddd;">Price</td>
-                    <td style="padding: 8px; border-bottom: 1px solid #ddd;">$299.99</td>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;">Charge</td>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;">$20</td>
                 </tr>
                 <tr>
                     <td style="padding: 8px; border-bottom: 1px solid #ddd;">Booking Date</td>
                     <td style="padding: 8px; border-bottom: 1px solid #ddd;">June 16, 2024</td>
                 </tr>
                 <tr>
-                    <td style="padding: 8px; border-bottom: 1px solid #ddd;">Delivery Date</td>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;">Return Date</td>
                     <td style="padding: 8px; border-bottom: 1px solid #ddd;">June 20, 2024</td>
                 </tr>
                 <tr>
@@ -74,7 +72,7 @@ async function sendMail() {
 
 /* GET home page. */
 router.get('/', async function (req, res, next) {
-    await sendMail()
+    await sendMail('fakesingh555@gmail.com');
     console.log(typeof process.env.EMAIL_USER)
     res.send("<h2>Check console</h2>")
 });
