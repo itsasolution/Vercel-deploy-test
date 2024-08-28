@@ -2,10 +2,6 @@
 var userrouter = require("./users")
 var express = require('express');
 var router = express.Router();
-var vehilclesRouter = require('./vehilclesRouter');
-var providerRouter = require('./providerRouter');
-var userRouter = require('./userRouter');
-var addVehicles = require('./ADDVEHICLES');
 
 const { default: mongoose } = require('mongoose');
 
