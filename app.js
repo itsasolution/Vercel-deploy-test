@@ -6,7 +6,6 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const { default: mongoose } = require('mongoose');
 var app = express();
 
 // view engine setup 
@@ -20,16 +19,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
-try {
-  let Mongourl = "mongodb+srv://Astro-Coder:astro@cluster0.nvexmiu.mongodb.net/Renify?retryWrites=true&w=majority&appName=Cluster0";
-
-  mongoose.connect(Mongourl)
-  console.log("DB connection success")
-} catch (err) {
-  console.log("dataBase error" + err)
-}
 
 app.listen(3000)
 
